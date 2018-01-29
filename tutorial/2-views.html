@@ -19,20 +19,30 @@
 
 /* Let's make a functional model. Fill in the Comment model with the functions
  * that we will need to make changes to the object and set initial values.
- */
+ */myNewMessage.set({message: 'someMessage'});
+
 var Comment = Backbone.Model.extend({
   /* The argument passed to `initialize` is what the model is instantiated with:
    * in `new Comment(message)`, message will be passed to `initialize`. */
   initialize: function(message) {
+    this.set = {
+      votes: '0',
+      message: message
+    };
     /* Set the initial values for `votes` to 0 and `message` to the message.
      * Remember to use setters when working with attributes! */
   },
   votes: function() {
+    this.get('votes');
     /* Return the votes attribute on this model.
      * Remember to use a getter when working with attributes! */
   },
   upvote: function(){
+    this.set('votes', this.get('votes') + 1);
     // Set the `votes` attribute to the current vote count plus one.
+  },
+  downvote: function() {
+    this.set('votes', this.get('votes') - 1);
   }
   // Add a downvote function; don't forget the comma above.
 });
